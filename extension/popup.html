@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div id="load-screen" style="width: 100%; height: 100%; z-index: 999; position: absolute; background-color: white; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+  <div id="load-screen" style="width: 100%; height: 100%; z-index: 2147483647; position: absolute; background-color: white; display: flex; align-items: center; justify-content: center; flex-direction: column;">
     <h3><i>Loading...</i></h3>
   </div>
 
@@ -46,6 +46,14 @@
 
   <audio id="van-start" controls="false" style="visibility: hidden;">
     <source src="audio/van-start.mp3" type="audio/mpeg">
+  </audio>
+  
+  <audio id="ambient-buzz" controls="false" loop="true" style="visibility: hidden;">
+    <source src="audio/ambient-buzz.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="door-open" controls="false" style="visibility: hidden;">
+    <source src="audio/door-open.mp3" type="audio/mpeg">
   </audio>
 
   <script src="scripts/internal/popup.js"></script>

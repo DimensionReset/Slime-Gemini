@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const van = document.getElementById("van");
 
   const hostageScene = document.getElementById("hostage-scene");
+  const ambientBuzz = document.getElementById("ambient-buzz");
+  const doorOpen = document.getElementById("door-open");
   const gemini = document.getElementById("gemini");
 
   const loadingScreen = document.getElementById("load-screen");
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // if van done, open hostage scene
     if (result["vanCompleted"]) {
+      ambientBuzz.play()
       vanScene.style.visibility = "hidden";
       hostageScene.style.visibility = "visible";
       document.body.classList.add("hostage-bg"); // Set background on load
@@ -66,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isChecked) {
       // debounce
+      doorOpen.play();
       gemini.classList.add("move");
       switchHostage.disabled = true;
 
