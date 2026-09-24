@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Slime Gemini",
+  "version": "1.0",
+  "description": "Get rid of Gemini everywhere. Begone!",
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "webNavigation"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "scripts/main/background.js"
+  }
+}
