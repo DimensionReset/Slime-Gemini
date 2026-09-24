@@ -19,8 +19,6 @@
 
 	"permissions": ["webNavigation", "storage"],
 
-	"host_permissions": ["<all_urls>"],
-
 	"background": {
 		"service_worker": "scripts/main/background.js"
 	},
