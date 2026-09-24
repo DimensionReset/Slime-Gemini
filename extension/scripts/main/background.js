@@ -36,8 +36,8 @@ function geminiSearch(details, remove) {
 
 // INIT - CHECK GOOGLE SEARCH
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
-	chrome.storage.local.get(["disable-search"], (result) => {
-		if (result["disable-search"]) {
+	chrome.storage.local.get(["disable-gemini"], (result) => {
+		if (result["disable-gemini"]) {
             geminiSearch(details, true)
         } else {
             geminiSearch(details, false)

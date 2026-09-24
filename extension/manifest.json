@@ -23,5 +23,13 @@
 
 	"background": {
 		"service_worker": "scripts/main/background.js"
-	}
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["https://www.google.com/search*"],
+			"js": ["scripts/main/content.js"],
+			"run_at": "document_start"
+		}
+	]
 }
