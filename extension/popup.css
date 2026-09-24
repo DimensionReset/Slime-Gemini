@@ -1,11 +1,34 @@
 /*== MAIN DESIGN */
 
 /* Van background */
-body {
-	width: 200px;
-	height: 300px;
-	background-image: url("images/off-background.png");
-	background-size: cover;
+html, body {
+    width: 200px;
+    height: 300px;
+    max-width: 200px;
+    max-height: 300px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.van {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    position: relative;
+    left: -100%;
+
+    transition: 
+        left 0.7s;
+}
+
+.van.move {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    position: relative;
+    left: 100%;
 }
 
 /*== SWITCH/KNOB RELATED STUFF ==*/
@@ -14,6 +37,8 @@ body {
 .switch {
 	position: relative;
 	display: inline-block;
+    flex-shrink: 0;
+
 	width: 100px;
 	height: 100px;
 }
@@ -27,6 +52,7 @@ body {
 
 /* Outer ring around ignition */
 .ignition-cylinder {
+    box-sizing: border-box;
 	position: absolute;
 
 	top: 0;
