@@ -6,8 +6,13 @@ html, body {
     height: 300px;
     max-width: 200px;
     max-height: 300px;
+    background-size: cover;
     overflow: hidden;
     margin: 0;
+}
+
+body.bg {
+    background-image: url("images/off-background.png");
 }
 
 .van {
@@ -19,7 +24,7 @@ html, body {
     left: -100%;
 
     transition: 
-        left 0.7s;
+        left 2s;
 }
 
 .van.move {

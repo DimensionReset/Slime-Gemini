@@ -1,22 +1,27 @@
 {
-  "manifest_version": 3,
-  "name": "Slime Gemini",
-  "version": "1.0",
-  "description": "Get rid of Gemini everywhere. Begone!",
+	"manifest_version": 3,
+	"name": "Slime Gemini",
+	"version": "1.0",
+	"description": "Get rid of Gemini everywhere. Begone!",
 
-  "action": {
-    "default_popup": "popup.html"
-  },
+	"icons": {
+		"16": "images/extension-logo-16.png",
+		"32": "images/extension-logo-32.png",
+		"48": "images/extension-logo-48.png",
+        "64": "images/extension-logo-64.png",
+		"128": "images/extension-logo-128.png"
+	},
 
-  "permissions": [
-    "webNavigation"
-  ],
+	"action": {
+		"default_popup": "popup.html",
+        "default_icon": "images/extension-logo.png"
+	},
 
-  "host_permissions": [
-    "<all_urls>"
-  ],
+	"permissions": ["webNavigation", "storage"],
 
-  "background": {
-    "service_worker": "scripts/main/background.js"
-  }
+	"host_permissions": ["<all_urls>"],
+
+	"background": {
+		"service_worker": "scripts/main/background.js"
+	}
 }
