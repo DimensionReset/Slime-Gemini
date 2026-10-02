@@ -1,3 +1,10 @@
+/*
+    gemini-app.js || DimensionReset
+
+    Content script to remove cover up
+    Gemini App/Website.
+*/
+
 function updateBlockOverlayState(shouldBlock) {
     const overlayId = "slime-gemini-overlay";
     const fontId = "slime-gemini-font";
@@ -49,9 +56,29 @@ function updateBlockOverlayState(shouldBlock) {
 }
 
 function applyGeminiBlockPreference() {
+    // check whether extension is enabled or not
     chrome.storage.local.get(["disable-gemini"], (result) => {
-        const isGeminiDisabled = !!result["disable-gemini"];
-        updateBlockOverlayState(isGeminiDisabled);
+        const isGeminiDisabled = (!!result["disable-gemini"]);
+        
+        if (isGeminiDisabled) {
+            // block ai mode tab itself
+            // thanks for suggestion reddit users :D
+            const isGoogleSearch = window.location.hostname.includes("google.");
+            const urlParams = new URLSearchParams(window.location.search);
+            const isAiMode = urlParams.get("udm") === "50";
+
+            // check for the Gemini web app domains
+            const isGeminiApp = window.location.hostname === "://google.com" || window.location.hostname === "://google.com";
+
+            // check for search and is in ai mode
+            if ((isGoogleSearch && isAiMode) || isGeminiApp) {
+                updateBlockOverlayState(true);
+            } else {
+                updateBlockOverlayState(false);
+            }
+        } else {
+            updateBlockOverlayState(false);
+        }
     });
 }
 

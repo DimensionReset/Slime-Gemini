@@ -1,3 +1,9 @@
+/*
+    tab-remover.js || DimensionReset
+
+    Content script to remove AI mode tab.
+*/
+
 // removes ai mode section
 function removeAIModeSection() {
     // get container with jsname
@@ -44,24 +50,33 @@ hideStyle.textContent = `
 `
 
 function applyGeminiPreference() {
+    // check whether extension is enabled or not
     chrome.storage.local.get(["disable-gemini"], (result) => {
         isGeminiDisabled = !!result["disable-gemini"];
 
         if (isGeminiDisabled) {
+
+            // temp css to instantly hide tab
             if (!document.getElementById('dim-reset-css')) {
                 (document.head || document.documentElement).appendChild(hideStyle);
             }
 
+            // initial attempt to remove tab
             removeAIModeSection();
 
             if (!observer) {
                 observer = new MutationObserver(() => {
+                    // removes gemini tab if extension enabled after page load
+                    // i should prolly change this but it lowkey tuff
                     if (isGeminiDisabled) {
+
+                        /* after mutation observer begins
+                        keep trying to remove ai mode section */
                         removeAIModeSection();
                     }
                 });
 
-                // Start observing root document immediately (faster than body)
+                // begin observe root document
                 observer.observe(document.documentElement, {
                     childList: true,
                     subtree: true

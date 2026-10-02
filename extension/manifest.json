@@ -26,13 +26,13 @@
 	"content_scripts": [
 		{
 			"matches": ["https://www.google.com/search*"],
-			"js": ["scripts/main/ai-mode.js"],
+			"js": ["scripts/main/tab-remover.js"],
 			"run_at": "document_start"
 		},
 
 		{
-			"matches": ["https://gemini.google.com/*"],
-			"js": ["scripts/main/gemini-app.js"],
+			"matches": ["https://www.google.com/search*", "https://gemini.google.com/*"],
+			"js": ["scripts/main/overlay-adder.js"],
 			"run_at": "document_start"
 		}
 	]
