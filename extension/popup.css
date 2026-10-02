@@ -19,6 +19,16 @@ body {
 	font-family: 'Google Sans', sans-serif;
 }
 
+h1 {
+	margin-bottom: 0;
+	text-decoration: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
 p.help {
 	font-size: x-small;
 	margin-top: 0;
