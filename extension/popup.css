@@ -19,6 +19,12 @@ body {
 	font-family: 'Google Sans', sans-serif;
 }
 
+p.help {
+	font-size: x-small;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
 /* Helper to remove animations on load */
 html.disable-animations,
 html.disable-animations * {
