@@ -22,7 +22,7 @@ body {
 p.help {
 	font-size: x-small;
 	margin-top: 0;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 /* Helper to remove animations on load */
