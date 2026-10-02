@@ -34,6 +34,12 @@
 			"matches": ["https://www.google.com/search*", "https://gemini.google.com/*"],
 			"js": ["scripts/main/overlay-adder.js"],
 			"run_at": "document_start"
+		},
+
+		{
+			"matches": ["https://docs.google.com/*"],
+			"js": ["scripts/main/docs-remover.js"],
+			"run_at": "document_start"
 		}
 	]
 }

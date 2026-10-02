@@ -55,7 +55,7 @@ function updateBlockOverlayState(shouldBlock) {
     }
 }
 
-function applyGeminiBlockPreference() {
+function applyGeminiPreference() {
     // check whether extension is enabled or not
     chrome.storage.local.get(["disable-gemini"], (result) => {
         const isGeminiDisabled = (!!result["disable-gemini"]);
@@ -85,13 +85,13 @@ function applyGeminiBlockPreference() {
 // listen for setting change
 chrome.storage.onChanged.addListener((changes, namespace) => {
     if (namespace === "local" && changes["disable-gemini"]) {
-        applyGeminiBlockPreference();
+        applyGeminiPreference();
     }
 });
 
 // check setting state
 if (document.documentElement) {
-    applyGeminiBlockPreference();
+    applyGeminiPreference();
 } else {
-    document.addEventListener("DOMContentLoaded", applyGeminiBlockPreference);
+    document.addEventListener("DOMContentLoaded", applyGeminiPreference);
 }

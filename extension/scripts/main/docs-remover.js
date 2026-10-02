@@ -1,32 +1,20 @@
 /*
-    tab-remover.js || DimensionReset
+    docs-remover.js || DimensionReset
 
-    Content script to remove AI mode tab.
+    Content script to remove "Try Gemini" button
+    from Google Docs.
 */
 
-// removes ai mode section
-function removeAIModeSection() {
-    // get container with jsname
-    const aiModeSpan = document.querySelector('[jsname="KliEFc"]');
+// removes "Try Gemini" button
+function removeGeminiButton() {
+    // get container with id
+    const tryButton = document.querySelector("#docs-sidekick-gen-ai-promo-button-container");
 
-    if (aiModeSpan) {
-        // check content
-        if (aiModeSpan.textContent.trim().toLowerCase().includes("ai mode")) {
-            
-            // get ancestor
-            const targetSection = aiModeSpan.closest('div.olrp5b') ||
-                                  aiModeSpan.closest('.mXwfNd') || 
-                                  aiModeSpan.closest('[role="navigation"]') || 
-                                  aiModeSpan.closest('div.mVH5Fc') ||
-                                  aiModeSpan.parentElement?.parentElement?.parentElement;
-
-            if (targetSection) {
-                targetSection.remove();
-                console.log("[Slime-Gemini] AI Mode section removed successfully.");
-                return true;
-            }
-        }
+    if (tryButton) {
+        tryButton.remove();
+        console.log("[Slime-Gemini] \"Try Gemini\" button removed successfully.");
     }
+
     return false;
 }
 
@@ -36,15 +24,9 @@ let isGeminiDisabled = false;
 // temp CSS hiding to prevent flash of content
 const hideStyle = document.createElement('style');
 hideStyle.id = 'dim-reset-css';
-// hideStyle.textContent = `
-//     div.olrp5b:has([jsname="KliEFc"]), 
-//     .mXwfNd:has([jsname="KliEFc"]) { 
-//         display: none !important; 
-//     }
-// `;
 
 hideStyle.textContent = `
-    [jsname="KliEFc"] {
+    #docs-sidekick-gen-ai-promo-button-container {
         display: none !important;
     }
 `
@@ -61,18 +43,18 @@ function applyGeminiPreference() {
                 (document.head || document.documentElement).appendChild(hideStyle);
             }
 
-            // initial attempt to remove tab
-            removeAIModeSection();
+            // initial attempt to button
+            removeGeminiButton();
 
             if (!observer) {
                 observer = new MutationObserver(() => {
-                    // removes gemini tab if extension enabled after page load
+                    // removes gemini button if extension enabled after page load
                     // i should prolly change this but it lowkey tuff
                     if (isGeminiDisabled) {
 
                         /* after mutation observer begins
-                        keep trying to remove ai mode section */
-                        removeAIModeSection();
+                        keep trying to remove button */
+                        removeGeminiButton();
                     }
                 });
 
