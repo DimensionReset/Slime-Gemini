@@ -1,62 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="disable-animations">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="popup.css" />
+	</head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="popup.css">
-</head>
+	<body>
+		<div
+			id="load-screen"
+			style="
+				width: 100%;
+				height: 100%;
+				z-index: 2147483647;
+				position: absolute;
+				background-color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			"
+		>
+			<h3><i>Loading...</i></h3>
+		</div>
 
-<body>
-  <div id="load-screen" style="width: 100%; height: 100%; z-index: 2147483647; position: absolute; background-color: white; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-    <h3><i>Loading...</i></h3>
-  </div>
+		<!-- Van Scene -->
+		<div
+			id="van-scene"
+			style="
+				visibility: visible;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			"
+		>
+			<h1 style="color: black; margin-bottom: 0;">Slime-Gemini</h1>
+			<p id="help-van" style="color: darkblue; font-size: x-small; margin-top: 0; margin-bottom: 15px; visibility: hidden;">(Close the window again to toggle)</p>
 
-  <!-- Van Scene -->
-  <div id="van-scene" style="visibility: visible; position: absolute; width: 100%; height: 100%; display: flex; align-items: center; flex-direction: column;">
-    <h1 style="margin-bottom: 25px;">Slime Gemini</h1>
+			<label class="switch">
+				<input type="checkbox" id="switch-van" />
+				<span class="ignition-cylinder">
+					<span class="fake-track">
+						<span class="fake-knob"></span>
+					</span>
+				</span>
+			</label>
 
-    <label class="switch">
-      <input type="checkbox" id="switch-van">
-      <span class="ignition-cylinder">
-        <span class="fake-track">
-          <span class="fake-knob"></span>
-        </span>
-      </span>
-    </label>
+			<img src="images/van.png" class="van" id="van" />
+		</div>
 
-    <img src="images/van.png" class="van" id="van">
-  </div>
+		<!-- Hostage Scene -->
+		<div
+			id="hostage-scene"
+			style="
+				visibility: hidden;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			"
+		>
+			<h1 style="color: white; margin-bottom: 0;">Release Gemini</h1>
+			<p id="help-hostage" style="color: lightblue; font-size: x-small; margin-top: 0; margin-bottom: 15px; visibility: hidden;">(Close the window again to toggle)</p>
 
-  <!-- Hostage Scene -->
-  <div id="hostage-scene" style="visibility: hidden; position: absolute; width: 100%; height: 100%; display: flex; align-items: center; flex-direction: column;">
-    <h1 style="margin-bottom: 25px; color: white;">Release Gemini</h1>
+			<label class="switch">
+				<input type="checkbox" id="switch-hostage" />
+				<span class="ignition-cylinder">
+					<span class="fake-track">
+						<span class="fake-knob"></span>
+					</span>
+				</span>
+			</label>
 
-    <label class="switch">
-      <input type="checkbox" id="switch-hostage">
-      <span class="ignition-cylinder">
-        <span class="fake-track">
-          <span class="fake-knob"></span>
-        </span>
-      </span>
-    </label>
+			<img src="images/gemini.png" class="gemini" id="gemini" />
+		</div>
 
-    <img src="images/gemini.png" class="gemini" id="gemini">
-  </div>
+		<audio id="van-start" controls="false" style="visibility: hidden">
+			<source src="audio/van-start.mp3" type="audio/mpeg" />
+		</audio>
 
-  <audio id="van-start" controls="false" style="visibility: hidden;">
-    <source src="audio/van-start.mp3" type="audio/mpeg">
-  </audio>
-  
-  <audio id="ambient-buzz" controls="false" loop="true" style="visibility: hidden;">
-    <source src="audio/ambient-buzz.mp3" type="audio/mpeg">
-  </audio>
+		<audio
+			id="ambient-buzz"
+			controls="false"
+			loop="true"
+			style="visibility: hidden"
+		>
+			<source src="audio/ambient-buzz.mp3" type="audio/mpeg" />
+		</audio>
 
-  <audio id="door-open" controls="false" style="visibility: hidden;">
-    <source src="audio/door-open.mp3" type="audio/mpeg">
-  </audio>
+		<audio id="door-open" controls="false" style="visibility: hidden">
+			<source src="audio/door-open.mp3" type="audio/mpeg" />
+		</audio>
 
-  <script src="scripts/internal/popup.js"></script>
-</body>
-
+		<script src="scripts/internal/popup.js"></script>
+	</body>
 </html>
