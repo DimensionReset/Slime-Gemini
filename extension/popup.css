@@ -1,167 +1,191 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
 /* === WINDOW RELATED === */
+
+/* fix box calculations for firefox */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body {
-	width: 200px;
-	height: 300px;
+    width: 12.5em;
+    height: 18.75em;
 
-	max-width: 200px;
-	max-height: 300px;
+    margin: 0;
+    padding: 0;
 
-	box-sizing: border-box;
-	background-size: cover;
-	overflow: hidden;
-	
-	margin: 0;
-	padding: 0;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    font-family: 'Google Sans', sans-serif;
 
-	font-family: 'Google Sans', sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 h1 {
-	margin-bottom: 0;
-	text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 0.625rem;
+    margin-bottom: 0;
+    text-decoration: none;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 p.help {
-	font-size: x-small;
-	margin-top: 0;
-	margin-bottom: 10px;
+    font-size: 0.65rem;
+    margin-top: 0;
+    margin-bottom: 0.625rem;
 }
 
-/* Helper to remove animations on load */
+/* helper to remove animations on load */
 html.disable-animations,
 html.disable-animations * {
-	-webkit-transition: none !important;
-	-moz-transition: none !important;
-	-o-transition: none !important;
-	transition: none !important;
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/* layer bounds for firefox flex rendering */
+.scene-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12.5em;
+    height: 18.75em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* === VAN SCENE === */
 body.van-bg {
-	background-image: url("images/van-background.png");
+    background-image: url("images/van-background.png");
 }
 
 .van {
-	width: 150px;
-	height: 150px;
+    width: 9.375rem;
+    height: 9.375rem;
 
-	object-fit: cover;
-	position: relative;
+    object-fit: cover;
+    position: relative;
 
-	left: -125%;
+    left: -125%;
 }
 
 .van.move {
-	width: 150px;
-	height: 150px;
+    width: 9.375rem;
+    height: 9.375rem;
 
-	object-fit: cover;
-	position: relative;
+    object-fit: cover;
+    position: relative;
 
-	left: 125%;
-	transition: left 3s ease-in;
+    left: 125%;
+    transition: left 3s ease-in;
 }
 
 /* === HOSTAGE SCENE === */
 body.hostage-bg {
-	background-image: url("images/hostage-background.png");
+    background-image: url("images/hostage-background.png");
 }
 
 .gemini {
-	width: 75px;
-	height: 75px;
+    width: 4.688rem;
+    height: 4.688rem;
 
-	object-fit: cover;
-	position: relative;
+    object-fit: cover;
+    position: relative;
 
-	left: 0;
-	bottom: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .gemini.move {
-	width: 75px;
-	height: 75px;
+    width: 4.688rem;
+    height: 4.688rem;
 
-	object-fit: cover;
-	position: relative;
+    object-fit: cover;
+    position: relative;
 
-	left: -100%;
-	bottom: -15%;
-	transition: left 2s, bottom 0.35s;
+    left: -100%;
+    bottom: -15%;
+    transition: left 2s, bottom 0.35s;
 }
 
 /*== SWITCH/KNOB RELATED STUFF ==*/
 
 .switch {
-	position: relative;
-	display: inline-block;
-	flex-shrink: 0;
-	width: 100px;
-	height: 100px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 6.25rem;
+    height: 6.25rem;
 }
 
 .switch input {
-	opacity: 0;
-	width: 0;
-	height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .ignition-cylinder {
-	box-sizing: border-box;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0);
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition:
-		border 0.7s,
-		background-color 0.4s;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+        border 0.7s,
+        background-color 0.4s;
 }
 
 .fake-track {
-	cursor: pointer;
-	position: relative;
-	width: 60px;
-	height: 20px;
-	background-color: #cccccc;
-	border-radius: 34px;
-	transform: rotate(0deg);
-	transition:
-		transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-		background-color 0.4s;
+    cursor: pointer;
+    position: relative;
+    width: 3.75rem;
+    height: 1.25rem;
+    background-color: #cccccc;
+    border-radius: 2.125rem;
+    transform: rotate(0deg);
+    transition:
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.4s;
 }
 
 .fake-knob {
-	position: absolute;
-	content: "";
-	height: 12px;
-	width: 12px;
-	left: 4px;
-	bottom: 4px;
-	background-color: white;
-	border-radius: 50%;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    content: "";
+    height: 0.75rem;
+    width: 0.75rem;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .ignition-cylinder {
-	background-color: rgba(30, 30, 30, 1);
-	border: 4px solid #ccc;
+    background-color: rgba(30, 30, 30, 1);
+    border: 0.25rem solid #ccc;
 }
 
 input:checked + .ignition-cylinder .fake-track {
-	background-color: #000000;
-	transform: rotate(90deg);
+    background-color: #000000;
+    transform: rotate(90deg);
 }

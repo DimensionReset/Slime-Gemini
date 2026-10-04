@@ -68,7 +68,7 @@ function applyGeminiPreference() {
             const isAiMode = urlParams.get("udm") === "50";
 
             // check for the Gemini web app domains
-            const isGeminiApp = window.location.hostname === "://google.com" || window.location.hostname === "://google.com";
+            const isGeminiApp = window.location.hostname.includes("gemini.google.com");
 
             // check for search and is in ai mode
             if ((isGoogleSearch && isAiMode) || isGeminiApp) {
